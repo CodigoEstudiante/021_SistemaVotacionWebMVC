@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ingreso</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body class="bg-dark">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center min-vh-100">
+                    <div class="w-100 d-block my-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-lg-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center mb-4 mt-3">
+                                            <a href="index.html">
+                                                <span><img src="@Url.Content("~/Imagenes/votacion.jpg")" alt="" height="100"></span>
+                                            </a>
+                                        </div>
+                                        <form action="@Url.Content("~/Votacion/Ingreso")" method="post" class="p-2" autocomplete="off">
+
+                                            <div class="form-group text-center">
+                                                <label class="font-weight-bold">Documento Identidad</label>
+                                                <input class="form-control" type="text" name="documentoidentidad" required="" autocomplete="34%&43344">
+                                            </div>
+                                            <div class="form-group">
+                                                @if (ViewBag.Mensaje != null)
+                                                {
+                                                    <div class="alert alert-danger" role="alert">
+                                                        @ViewBag.Mensaje
+                                                    </div>
+                                                }
+                                            </div>
+
+                                            <div class="mb-3 text-center">
+                                                <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- end card-body -->
+                                </div>
+                                <!-- end card -->
+                                <div class="row mt-4">
+                                    <div class="col-sm-12 text-center">
+                                        <p class="text-white-50 mb-0">Todos los derechos reservados &copy;<a href="https://ouo.io/RK1tRH" target="_blank" class="text-white-50 ml-1"><b>Open Source - HERE</b></a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </div> <!-- end .w-100 -->
+                </div> <!-- end .d-flex -->
+            </div> <!-- end col-->
+        </div> <!-- end row -->
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

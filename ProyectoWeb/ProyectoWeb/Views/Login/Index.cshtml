@@ -1,0 +1,104 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body class="bg-dark">
+    @*<div class="container">
+            <div class="row">
+                <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mx-auto">
+                            <!-- form card login -->
+                            <div class="card rounded shadow shadow-sm">
+                                <div class="card-header">
+                                    <h3 class="mb-0">Login</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                        <div class="form-group">
+                                            <label for="uname1">Usuario</label>
+                                            <input type="text" class="form-control rounded-0" name="uname1" id="uname1" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contraseña</label>
+                                            <input type="password" class="form-control rounded-0" id="pwd1" required="">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block" id="btnLogin">Ingresar</button>
+                                    </form>
+                                </div>
+                                <div class="card-footer">
+
+                                </div>
+                                <!--/card-block-->
+                            </div>
+                            <!-- /form card login -->
+                        </div>
+
+                    </div>
+                    <!--/row-->
+                </div>
+                <!--/col-->
+            </div>
+            <!--/row-->
+        </div>*@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center min-vh-100">
+                    <div class="w-100 d-block my-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-lg-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center mb-4 mt-3">
+                                            <a href="index.html">
+                                                <span><img src="@Url.Content("~/Imagenes/votacion.jpg")" alt="" height="100"></span>
+                                            </a>
+                                        </div>
+                                        <form action="@Url.Content("~/Login/Index")" method="post" class="p-2">
+                                            <div class="form-group">
+                                                <label for="emailaddress">Correo</label>
+                                                <input class="form-control" type="email" name="correo" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Contraseña</label>
+                                                <input class="form-control" type="password" required="" name="clave">
+                                            </div>
+
+                                            <div class="mb-3 text-center">
+                                                <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- end card-body -->
+                                </div>
+                                <!-- end card -->
+
+                                <div class="row mt-4">
+                                    <div class="col-sm-12 text-center">
+                                        <p class="text-white-50 mb-0">Todos los derechos reservados &copy;<a href="https://ouo.io/RK1tRH" target="_blank" class="text-white-50 ml-1"><b>Open Source - HERE</b></a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </div> <!-- end .w-100 -->
+                </div> <!-- end .d-flex -->
+            </div> <!-- end col-->
+        </div> <!-- end row -->
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

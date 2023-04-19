@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Elecciones</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/PluginsCSS")
+</head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center min-vh-100">
+                    <div class="w-100 d-block">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8">
+                                <div class="card">
+                                    <div class="card-body" id="elecciones">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/PluginsJS")
+    <script type="text/javascript">
+
+        $.extend({ MisUrls: { url: {}, urls: function (a) { $.extend($.MisUrls.url, a); } } });
+
+        //CONTROLADOR USUARIO
+        $.MisUrls.urls({ obtenerElecciones: '@Url.Action("ObtenerElecciones", "Votacion")' });
+        $.MisUrls.urls({ urlCandidatos: '@Url.Action("Candidatos", "Votacion")' });
+
+
+    </script>
+    <script src="~/Scripts/Views/Elecciones.js"></script>
+</body>
+</html>

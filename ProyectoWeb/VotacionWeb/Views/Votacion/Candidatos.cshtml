@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Candidatos</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/PluginsCSS")
+    <style>
+        input[type=checkbox] {
+            width: 100px;
+            height: 100px;
+            cursor:pointer;
+        }
+
+    </style>
+</head>
+<body class="bg-dark">
+    <div class="container">
+
+        <div class="row" id="vista1">
+            <div class="col-12">
+                <div class="d-flex align-items-center min-vh-100">
+                    <div class="w-100 d-block">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8">
+                                <div class="card p-3">
+                                    <div class="row mb-2">
+                                        <div class="col-sm-12">
+                                            <div class="card-body card-candidatos" id="candidatos" style="max-height: 500px; overflow-y: scroll;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-block btn-primary btn-lg" onclick="terminarVotacion()">TERMINAR</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="vista2">
+            <div class="col-12">
+                <div class="d-flex align-items-center min-vh-100">
+                    <div class="w-100 d-block">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8">
+                                <div class="card p-3">
+                                   
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="alert alert-primary text-center" role="alert">
+                                                <p>
+                                                    <h3>Gracias por votar</h3>
+                                                    Cerrando en <span id="contador">3</span> ...
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/PluginsJS")
+    <script type="text/javascript">
+
+        $.extend({ MisUrls: { url: {}, urls: function (a) { $.extend($.MisUrls.url, a); } } });
+
+        //CONTROLADOR USUARIO
+        $.MisUrls.urls({ obtenerCandidatos: '@Url.Action("ObtenerCandidatos", "Votacion")' });
+        $.MisUrls.urls({ UrlIngreso: '@Url.Action("Ingreso", "Votacion")' });
+        $.MisUrls.urls({ terminarVotacion: '@Url.Action("TerminarVotacion", "Votacion")' });
+
+
+    </script>
+    <script src="~/Scripts/Views/Candidatos.js"></script>
+</body>
+</html>

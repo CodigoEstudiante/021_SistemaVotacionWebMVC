@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/PluginsCSS")
+    @RenderSection("estilos", required: false)
+</head>
+<body>
+
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+        @*<a class="navbar-brand" href="#">Votación Online</a>*@
+        <a class="navbar-brand" href="#">
+            <img src="@Url.Content("~/Imagenes/votacion.jpg")" width="100" height="40" alt="logo">
+        </a>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" name="resultados" href="@Url.Action("Index","DashBoard")"><i class="fas fa-chart-line"></i>  Resultados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" name="usuarios" href="@Url.Action("Index","Usuario")"><i class="fas fa-user-friends"></i>  Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" name="elecciones" href="@Url.Action("Index","Eleccion")"><i class="far fa-calendar-check"></i>  Elecciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" name="candidatos" href="@Url.Action("Index","Candidato")"><i class="fas fa-child"></i>  Candidatos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" name="votantes" href="@Url.Action("Index","Votante")"><i class="far fa-address-card"></i>  Votantes</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-file-alt"></i>  Reportes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" name="rptcandidatos" href="@Url.Action("Candidatos","Reporte")"> Candidatos</a>
+                        <a class="dropdown-item" name="rptvotantes" href="@Url.Action("Votantes","Reporte")"> Votantes</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ouo.io/VRgLgZ" target="_blank"><i class="fas fa-hands-helping"></i> Click y ayuda al Canal</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a href="@Url.Action("Salir", "DashBoard")" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>
+                            <strong>Salir</strong>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/PluginsJS")
+
+    <script type="text/javascript">
+
+        $.extend({ MisUrls: { url: {}, urls: function (a) { $.extend($.MisUrls.url, a); } } });
+
+        //CONTROLADOR USUARIO
+        $.MisUrls.urls({ Url_ObtenerUsuarios: '@Url.Action("Obtener", "Usuario")' });
+        $.MisUrls.urls({ Url_GuardarUsuario: '@Url.Action("Guardar", "Usuario")' });
+        $.MisUrls.urls({ Url_EliminarUsuario: '@Url.Action("Eliminar", "Usuario")' });
+
+        //CONTROLADOR ELECCION
+        $.MisUrls.urls({ Url_ObtenerElecciones: '@Url.Action("Obtener", "Eleccion")' });
+        $.MisUrls.urls({ Url_GuardarEleccion: '@Url.Action("Guardar", "Eleccion")' });
+
+
+        //CONTROLADOR CANDIDATO
+        $.MisUrls.urls({ Url_ObtenerCandidatos: '@Url.Action("Obtener", "Candidato")' });
+        $.MisUrls.urls({ Url_GuardarCandidato: '@Url.Action("Guardar", "Candidato")' });
+
+        //CONTROLADOR VOTANTE
+        $.MisUrls.urls({ Url_CargarVotantes: '@Url.Action("CargarExcel", "Votante")' });
+        $.MisUrls.urls({ Url_ObtenerVotantes: '@Url.Action("Obtener", "Votante")' });
+        $.MisUrls.urls({ Url_GuardarVotante: '@Url.Action("Guardar", "Votante")' });
+
+        //CONTROLADOR DASHBOARD
+        $.MisUrls.urls({ Url_obtenerResultados: '@Url.Action("ObtenerResultados", "DashBoard")' });
+
+
+        //lenguaje español datatable
+        $.MisUrls.urls({ Url_datatable_spanish: '@Url.Content("~/content/plugins/datatables/js/datatable_spanish.json")' });
+
+        $.MisUrls.urls({ bootstrap: '@Url.Content("~/Content/bootstrap.min.css")' });
+
+
+        $.MisUrls.urls({ logo: '@Url.Content("~/Imagenes/logovoto.png")' });
+
+
+    </script>
+    <script>
+       
+        function activarMenu(menuactivo) {
+
+            var ul = $("ul.navbar-nav");
+            ul.find("li.nav-item").each(function (i, li) {
+
+                var a;
+
+                if ($(li).find("div.dropdown-menu").length != 0) {
+
+                    var div = $($(li).find("div.dropdown-menu"))
+                    div.find("a.dropdown-item").each(function (x, tagA) {
+                        if ($(tagA).attr("name") == menuactivo) {
+                            $(li).addClass("active");
+                            return false;
+                        }
+                    })
+                    return false;
+                } else {
+
+                    a = $(li).find("a.nav-link");
+
+                    if ($(a).attr("name") == menuactivo) {
+                        $(li).addClass("active");
+                        return false;
+                    }
+                }
+            });
+        }
+
+        //$('li a.nav-link').click(function (e) {
+        //    if ($(this).attr("name") != undefined)
+        //        createCookie($(this).attr("name"));
+        //});
+
+        //$('div a.dropdown-item').click(function (e) {
+        //    if ($(this).attr("name") != undefined)
+        //        createCookie($(this).attr("name"));
+        //});
+
+
+
+        //function createCookie(cName) {
+        //    deleteAllCookies();
+        //    document.cookie = "menuactivo=" + cName + "; path=/;";
+        //}
+
+        //function getCookie(cName) {
+        //    const name = cName + "=";
+        //    const cDecoded = decodeURIComponent(document.cookie); //to be careful
+        //    const cArr = cDecoded.split('; ');
+        //    let res;
+        //    cArr.forEach(val => {
+        //        if (val.indexOf(name) === 0) res = val.substring(name.length);
+        //    })
+        //    return res;
+        //}
+
+
+        //function deleteAllCookies() {
+        //    var cookies = document.cookie.split(";");
+
+        //    for (var i = 0; i < cookies.length; i++) {
+        //        var cookie = cookies[i];
+        //        var eqPos = cookie.indexOf("=");
+        //        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        //        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        //    }
+        //}
+
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
